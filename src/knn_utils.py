@@ -13,25 +13,19 @@ def isPresent (value, table):
 	return res
 
 def distance (x, y):
-	"Computes the scalar product between multidimensional vectors x and y"
-	if len(x) != len(y):
-		print "Woo vectors have differing length!"
-		return
-
+	"Computes the Euclidian distance between multidimensional vectors x and y"
 	res = 0;
 	for k in range(0,len(x)):
-		res += x[k] * y[k]
-	return sqrt(res)
+		res += (x[k] - y[k])**2
+	return math.sqrt(res)
 
-def max (table):
+def mostFrequentLabel (table):
 	"Returns the maximum value of a list of numbers"
-	if table == []:
-		return
-	max = table[0]
+	label = 0
 	for k in range(1,len(table)):
-		if max < table[k]:
-			max = table[k]
-	return max
+		if table[label] < table[k]:
+			label = k
+	return label
 
 def initArray (size, initvalue):
 	"Initialize a list with all fields equal to initvalue"

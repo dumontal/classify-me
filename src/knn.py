@@ -1,4 +1,4 @@
-import knn-utils;
+from knn_utils import *
 
 class KNN (object):
 	"Implementation of the K-Nearest Neighbours algorithm"
@@ -7,17 +7,13 @@ class KNN (object):
 	def learnFromData(self, inputs, outputs):
 		"The learning step here only consists in storing the inputs and the corresponding outputs"
 		# Note: We should use cross validation to find the "best" K and the number of labels
-
-		if len(inputs) != len(outputs):
-			print "Woo the learning data is inconsistent!"
-			return
 		self.inputs = inputs
 		self.outputs = outputs
 		self.K = 10
 		self.noLabels = 2
 
 
-	def predict(self, inputs, parameters):
+	def predict(self, inputs):
 		"Use the parameters learned from the above method to predict the labels"
 		
 		K = self.K
@@ -46,17 +42,18 @@ class KNN (object):
 					if isPresent(index, indexesAlreadyChecked) == False:
 						
 						dist = distance(inputs[n], trainIn[index])
-						if (minDistance == -1) || (dist < minDistance):
+						if (minDistance == -1) or (dist < minDistance):
 							minDistance = dist
 							minIndex = index
 
 				# We have found the cpt-th neighbour! Congratulations!
 				indexesAlreadyChecked[cpt] = minIndex
 				cpt += 1
-				labelArray[trainOut[minIndex]] += 1 # population increases
+				correspondingLabel = trainOut[minIndex]
+				labelArray[correspondingLabel] += 1 # population increases
 
 			# Now decide which label to give to the testing input (ie the most populous)
-			label = max(labelArray)
+			label = mostFrequentLabel(labelArray)
 			res.append(label)
 
 		print "Computation done."
