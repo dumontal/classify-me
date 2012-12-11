@@ -22,7 +22,6 @@ class KNN (object):
 		noLabels = self.noLabels
 		res = []
 
-		print "Applying the K-Nearest Neighbours algorithm to assign a label to each raw data..."
 		#iterate on every testing row
 		for n in range(0, len(inputs)): 
 
@@ -56,5 +55,4 @@ class KNN (object):
 			label = mostFrequentLabel(labelArray)
 			res.append(label)
 
-		print "Computation done."
 		return res

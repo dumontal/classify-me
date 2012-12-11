@@ -1,7 +1,4 @@
-"""
-This file contains several python resources used by the KNN algorithm.
-It might need some refactoring here in the future.
-"""
+# This file contains several python resources used by the KNN algorithm.
 import math
 
 def isPresent (value, table):
@@ -20,7 +17,7 @@ def distance (x, y):
 	return math.sqrt(res)
 
 def mostFrequentLabel (table):
-	"Returns the maximum value of a list of numbers"
+	"Returns the index of the maximum value in a list of numbers"
 	label = 0
 	for k in range(1,len(table)):
 		if table[label] < table[k]:
@@ -28,7 +25,7 @@ def mostFrequentLabel (table):
 	return label
 
 def initArray (size, initvalue):
-	"Initialize a list with all fields equal to initvalue"
+	"Initializes a list with all fields equal to initvalue"
 	l = []
 	for k in range(0, size):
 		l.append(initvalue)

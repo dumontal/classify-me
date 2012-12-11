@@ -1,5 +1,5 @@
 from manage_resources import *
-from evaluate import *
+from eval_perf import *
 from knn import *
 
 if __name__ == '__main__':
@@ -12,9 +12,11 @@ if __name__ == '__main__':
 	testIn = block['testIn']
 	testOut = block['testOut']
 
+	print "Use the K-Nearest Neighbours algorithm for predictions."
 	classifier = KNN()
 	classifier.learnFromData(trainIn, trainOut)
-	prediction = classifier.predict(testIn)
+	prediction = classifier.predict(testIn) # might take a few seconds
+	print "Computation done."
 
-	perf = precision(prediction, testOut)
-	print perf
+	perf = accuracy(prediction, testOut)
+	print "Accuracy for randomly distributed data (60% train - 40% test) is of: {0}%".format(perf)
