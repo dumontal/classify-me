@@ -11,3 +11,13 @@ def accuracy (predicted, expected):
 	res = res * 100 / float(N)
 	res = round(res, 2)
 	return res
+
+def statMean (tab):
+	"Returns the empirical mean of the list named 'tab'."
+	s = len(tab)
+	res = float(0)
+	for ind in range(0, s):
+		res += tab[ind]
+	res /= float(s)
+	res = round(res, 2)
+	return res
