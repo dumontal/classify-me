@@ -1,4 +1,6 @@
-# This file contains several python resources used by the KNN algorithm.
+# !/usr/bin/python
+# coding: utf-8
+
 import math
 
 def isPresent (value, table):

@@ -1,8 +1,10 @@
-from knn_utils import *
+# !/usr/bin/python
+# coding: utf-8
+
+from alg_utils import *
 
 class KNN (object):
 	"Implementation of the K-Nearest Neighbours algorithm"
-
 
 	def learnFromData(self, inputs, outputs):
 		"The learning step here only consists in storing the inputs and the corresponding outputs"
@@ -39,7 +41,6 @@ class KNN (object):
 				for index in range(0, len(trainIn)):
 					# do not count the same row twice
 					if isPresent(index, indexesAlreadyChecked) == False:
-						
 						dist = distance(inputs[n], trainIn[index])
 						if (minDistance == -1) or (dist < minDistance):
 							minDistance = dist

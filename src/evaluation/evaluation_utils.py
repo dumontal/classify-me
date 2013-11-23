@@ -1,3 +1,6 @@
+# !/usr/bin/python
+# coding: utf-8
+
 import csv
 import random
 
@@ -59,3 +62,25 @@ def leaveOneOut(inputs, outputs, rowToExclude):
 
 	block = {'trainIn': trainIn, 'trainOut': trainOut, 'testIn': testIn, 'testOut': testOut}
 	return block
+	
+def accuracy (predicted, expected):
+	"Compares the accuracy of the predicted vector related to the expected vector. Returns a percentage value."
+	N = len(predicted)
+	res = float(0)
+	for k in range(0, N):
+		if (predicted[k] == expected[k]):
+			res += 1
+
+	res = res * 100 / float(N)
+	res = round(res, 2)
+	return res
+
+def statMean (tab):
+	"Returns the empirical mean of the list named 'tab'."
+	s = len(tab)
+	res = float(0)
+	for ind in range(0, s):
+		res += tab[ind]
+	res /= float(s)
+	res = round(res, 2)
+	return res

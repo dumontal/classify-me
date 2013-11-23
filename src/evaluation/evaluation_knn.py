@@ -1,10 +1,19 @@
-from manage_resources import *
-from eval_perf import *
+# !/usr/bin/python
+# coding: utf-8
+
+import sys
+sys.path.append('../algorithms')
+
+from evaluation_utils import *
 from knn import *
 
 if __name__ == '__main__':
-	inputs = loadInputCSV('resources/inputs.csv')
-	outputs = loadOutputCSV('resources/outputs.csv')
+	pathToInputs = '../../resources/inputs.csv'
+	inputs = loadInputCSV(pathToInputs)
+
+	pathToOutputs = '../../resources/outputs.csv'
+	outputs = loadOutputCSV(pathToOutputs)
+
 	classifier = KNN()
 
 	"""
@@ -20,7 +29,6 @@ if __name__ == '__main__':
 
 	classifier.learnFromData(trainIn, trainOut)
 	prediction = classifier.predict(testIn)
-
 	perf = accuracy(prediction, testOut)
 	print "Accuracy for randomly distributed data (60% train - 40% test): {0}%".format(perf)
 
@@ -39,9 +47,9 @@ if __name__ == '__main__':
 
 		classifier.learnFromData(trainIn, trainOut)
 		prediction = classifier.predict(testIn)
-
 		perf = accuracy(prediction, testOut)
 		results.append(perf)
 
+	# Compute the average performance of the predictive algorithm.
 	perf = statMean(results)
 	print "Accuracy over cross validation technique: {0}%".format(perf)
