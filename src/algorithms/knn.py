@@ -11,7 +11,7 @@ class KNN (object):
 		# Note: We should use cross validation to find the "best" K and the number of labels
 		self.inputs = inputs
 		self.outputs = outputs
-		self.K = 10
+		self.K = 5
 		self.noLabels = 2
 
 
